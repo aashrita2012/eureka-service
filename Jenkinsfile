@@ -32,7 +32,7 @@ pipeline {
   }
 }
 
-stage('Check code coverage') {
+    stage('Check code coverage') {
             steps {
                 script {
                     def token = "squ_cdefd758e960e50fd24c6aab2ba592eca428aa4e"
@@ -91,6 +91,5 @@ stage('Update Image Tag in GitOps') {
         }
       }
     }
-
   }
 }
