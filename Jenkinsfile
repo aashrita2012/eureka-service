@@ -36,7 +36,7 @@ stage('Check code coverage') {
                 script {
                     def token = "squ_cdefd758e960e50fd24c6aab2ba592eca428aa4e"
                     def sonarQubeUrl = "http://54.83.130.8:9000/api"
-                    def componentKey = "com.codeddecode:eureka"
+                    def componentKey = "com.codedecode:eureka"
                     def coverageThreshold = 80.0
 
                     def response = sh (
