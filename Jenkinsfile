@@ -31,7 +31,6 @@ pipeline {
   }
 }
 
-
 stage('Check code coverage') {
             steps {
                 script {
@@ -58,7 +57,6 @@ stage('Check code coverage') {
                 }
             }
         } 
-
 
 stage('Docker Build and Push') {
       steps {
