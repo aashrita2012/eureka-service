@@ -67,8 +67,7 @@ stage('Docker Build and Push') {
       }
     } 
 
-
-     stage('Cleanup Workspace') {
+stage('Cleanup Workspace') {
       steps {
         deleteDir()
        
