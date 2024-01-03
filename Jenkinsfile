@@ -4,9 +4,10 @@ pipeline {
   environment {
     DOCKERHUB_CREDENTIALS = credentials('DOCKER_HUB_CREDENTIAL')
     VERSION = "${env.BUILD_ID}"
-    JENKINS_SERVER = "54.83.130.8"
+    JENKINS_SERVER = "54.174.179.191"
 
   }
+
   tools {
     maven "Maven"
   }
@@ -26,15 +27,15 @@ pipeline {
     }
 
     stage('SonarQube Analysis') {
-      steps {
-        sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.host.url=http://${JENKINS_SERVER}:9000/ -Dsonar.login=squ_cdefd758e960e50fd24c6aab2ba592eca428aa4e'
-    }
+  steps {
+    sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.host.url=http://${JENKINS_SERVER}:9000/ -Dsonar.login=squ_39a9694cd607275d372753857acf98695db232a1'
   }
+}
 
-    stage('Check code coverage') {
+stage('Check code coverage') {
             steps {
                 script {
-                    def token = "squ_cdefd758e960e50fd24c6aab2ba592eca428aa4e"
+                    def token = "squ_39a9694cd607275d372753857acf98695db232a1"
                     def sonarQubeUrl = "http://${JENKINS_SERVER}:9000/api"
                     def componentKey = "com.codedecode:eureka"
                     def coverageThreshold = 0.0
@@ -66,7 +67,8 @@ stage('Docker Build and Push') {
       }
     } 
 
-stage('Cleanup Workspace') {
+
+     stage('Cleanup Workspace') {
       steps {
         deleteDir()
        
@@ -90,5 +92,7 @@ stage('Update Image Tag in GitOps') {
         }
       }
     }
+
   }
+
 }
