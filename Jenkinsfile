@@ -59,15 +59,14 @@ stage('Check code coverage') {
         } 
 
 stage('Docker Build and Push') {
+  
       steps {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
           sh 'docker build -t veerendra1976/eureka-server:${VERSION} .'
           sh 'docker push veerendra1976/eureka-server:${VERSION}'
       }
     } 
-
-
-     stage('Cleanup Workspace') {
+    stage('Cleanup Workspace') {
       steps {
         deleteDir()
        
