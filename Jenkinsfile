@@ -7,7 +7,6 @@ pipeline {
     JENKINS_SERVER = "54.174.179.191"
 
   }
-
   tools {
     maven "Maven"
   }
